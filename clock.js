@@ -7,12 +7,19 @@ const clockContainer = document.querySelector(".js-clock"), //querySelector는 D
      const minutes = date.getMinutes(); //분
      const hours = date.getHours(); //시
      const seconds = date.getSeconds(); //초
-     clockTitle.innerText = `${hours}:${minutes}:${seconds}`;
+     //clockTitle.innerText = `${hours}:${minutes}:${seconds}`;
+     clockTitle.innerText = `${hours < 10 ? `0${hours}` : hours}:${
+            minutes < 10 ? `0${minutes}` : minutes
+        }:${seconds < 10 ? `0${seconds}` : seconds
+        }`;
+        //? 는 if와 비슷함. : 기준으로 앞에는 true일 때, 뒤에는 false 일때 출력
  }
 
 
 function init(){
-   getTime(); 
+   getTime();
+   setInterval(getTime, 1000); //1초마다 새로고침
 }
 
 init(); 
+
